@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Mijn eerste webpagina</title>
+    <title>De leukste plekken in Europa</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,25 +16,48 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Leuke plekken in Europa</h1>
+    <h1>De leukste plekken in Europa</h1>
     <p>Resize this responsive page to see the effect!</p>
 </div>
 
 <div class="container">
     <div class="row">
         <?php
-        $array = [
-            "Parijs" => "parijs.jpg",
+
+        //een lijst met afbeeldingen
+        $afbeeldingen = [
+            "Berlijn" => "berlijn.jpg",
             "Londen" => "londen.jpg",
-            "Berlijn" => "berlijn.jpg"
+            "Parijs" => "parijs.jpg"
         ];
-        foreach ($array as $key => $value) {
-            print '<div class="col-sm-4">';
-            print '<h3>'.$key.'</h3>';
-            print '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>';
-            print '<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>';
-            print '<img src=./images/'.$value.'>';
-            print '</div>';
+
+        //alle afbeeldingen overlopen, en kolom opmaken met titel en afbeelding
+        /*
+        foreach( $afbeeldingen as $stad => $afbeelding )
+        {
+            print "<div class='col-sm-4'>
+            <h3>$stad</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+
+            <img src=./images/$afbeelding width='300' height='200'>
+
+            </div>";
+        }
+        */
+
+        ?>
+
+        <?php
+        foreach ($afbeeldingen as $stad => $afbeelding)
+        {
+            ?>
+            <div class="col-sm-4">
+                <h3><?=$stad?></h3>
+                <p>Lorem Ipsum</p>
+                <img src="images/<?=$afbeelding?>">
+            </div>
+            <?php
         }
         ?>
     </div>

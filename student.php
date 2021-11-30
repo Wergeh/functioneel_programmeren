@@ -15,7 +15,7 @@ function StudentToTable($student){
     echo "<h1>Student</h1>";
     echo "<table>";
     foreach ($student as $key => $value){
-        echo "<tr><td>". ucfirst($key). "</td><td>". $value. "</td></tr>";
+        echo "<tr><td>".ucfirst($key)."</td><td>".$value."</td></tr>";
     }
     echo "</table>";
 }
