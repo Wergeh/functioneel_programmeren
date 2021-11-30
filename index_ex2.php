@@ -26,9 +26,9 @@
 
         //een lijst met afbeeldingen
         $afbeeldingen = [
-            "Berlijn" => "berlijn.jpg",
-            "Londen" => "londen.jpg",
-            "Parijs" => "parijs.jpg"
+            "Berlijn" => "berlin.jpg",
+            "Londen" => "london.jpg",
+            "Parijs" => "paris.jpg"
         ];
 
         //alle afbeeldingen overlopen, en kolom opmaken met titel en afbeelding
