@@ -62,7 +62,7 @@ $result = $conn->query($sql);
             <a href='stad.php'>Meer info</a>
             </div>";
 
-                //alle afbeeldingen overlopen, en kolom opmaken met titel en afbeelding
+                //run through images, make columns with image and titel
             }
         }
         else
