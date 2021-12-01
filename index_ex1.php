@@ -27,7 +27,7 @@
         //een lijst met afbeeldingen
         $afbeeldingen = [
             "berlijn.jpg",
-            "londen.jpg",
+            "london.jpg",
             "parijs.jpg"
         ];
 
