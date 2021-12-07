@@ -25,19 +25,39 @@
 <div class="container">
     <div class="row">
         <form action="save.php" method="post">
+
             <input type="hidden" name="tabel" value="hond">
+
             <div class="form-group">
                 <label for="hon_id">Id</label>
                 <input type="number" class="form-control" id="hon_id" name="hon_id">
             </div>
+
             <div class="form-group">
                 <label for="hon_merk">Merk</label>
-                <input type="text" class="form-control" id="hon_merk" name="hon_merk">
+                <input type="text" class="form-control" id="hon_merk" name="hon_merk" placeholder="Labrador, Jack Russel, ..">
             </div>
+
             <div class="form-group">
                 <label for="hon_naam">Naam</label>
                 <input type="text" class="form-control" id="hon_naam" name="hon_naam">
             </div>
+
+            <div class="form-group">
+                <label for="hon_geboortedatum">Naam</label>
+                <input type="date" class="form-control" id="hon_geboortedatum" name="hon_geboortedatum">
+            </div>
+
+            <div class="form-group">
+                <label for="hon_poten">Naam</label>
+                <input type="number" class="form-control" id="hon_poten" name="hon_poten" value="4">
+            </div>
+
+            <div class="form-group">
+                <label for="hon_land">Land</label>
+                <?php print MakeSelectLand(); ?>
+            </div>
+
             <button type="submit" class="btn btn-primary">Verzenden</button>
         </form>
     </div>
