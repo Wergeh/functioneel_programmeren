@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Detail Stad</title>
+    <title>Honden</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -18,51 +16,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-
 </head>
 <body>
-
 <div class="jumbotron text-center">
-    <h1>Detail Stad</h1>
+    <h1>De leukste honden van Europa</h1>
+    <p>Resize this responsive page to see the effect!</p>
 </div>
-
 <div class="container">
     <div class="row">
-
-        <?php
-        //we need data from the database, so...
-        require_once "database.php";
-
-        if ( ! is_numeric( $_GET["img_id"] ) ) die("Foutieve GET parameter!");
-
-        $rows = GetData( "select * from image where img_id=" . $_GET["img_id"] );
-        //$row = $rows[0];
-
-        foreach( $rows as $row )
-        {
-            //de kolom met de titel en de afbeelding erin
-            print '<div class="col-sm-12">';
-
-            //title, filename, pixels
-            print '<h3>' . $row['img_title'] . '</h3>';
-            print '<p>filename: ' .  $row['img_filename'] . '</p>';
-            print '<p>' .  $row['img_width'] . " x " . $row['img_height'] . ' pixels</p>';
-
-            //afbeelding
-            $link_image = "../images/" . $row['img_filename'];
-            print '<img class="img-fluid" style="width: 75%;" src="' . $link_image . '">';
-
-            //hyperlink
-            print '<p></p>';
-            print '<p><a href=steden2.php>Terug naar overzicht</a></p>';
-
-            print '</div>' ;
-        }
-
-        ?>
-
+        <form action="save.php" method="post">
+            <input type="hidden" name="tabel" value="hond">
+            <div class="form-group">
+                <label for="hon_id">Id</label>
+                <input type="number" class="form-control" id="hon_id" name="hon_id">
+            </div>
+            <div class="form-group">
+                <label for="hon_merk">Merk</label>
+                <input type="text" class="form-control" id="hon_merk" name="hon_merk">
+            </div>
+            <div class="form-group">
+                <label for="hon_naam">Naam</label>
+                <input type="text" class="form-control" id="hon_naam" name="hon_naam">
+            </div>
+            <button type="submit" class="btn btn-primary">Verzenden</button>
+        </form>
     </div>
 </div>
-
 </body>
 </html>

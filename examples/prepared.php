@@ -4,11 +4,20 @@
 error_reporting( E_ALL );
 ini_set( 'display_errors', 1 );
 
-require_once "connection_data.php";
-require_once "connection.php";
+require_once "config.php";
+
+// Create connection
+//global $servername, $username, $password, $dbname; //eigenlijk overbodig, enkel voor PHPStorm
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 //validate GET argument
-if ( ! is_numeric($_GET['img_id']))
+if ( ! is_numeric($_GET['id']))
 {
     die("Wrong parameter");
 }
@@ -33,10 +42,10 @@ if ( $stmt->affected_rows > 0 )
     while( $row = $result->fetch_assoc() )
     {
         echo $row["img_id"] . "<br>";
+        echo $row["img_title"] . "<br>";
         echo $row["img_filename"] . "<br>";
         echo $row["img_width"] . "<br>";
         echo $row["img_height"] . "<br>";
-        echo $row["img_title"] . "<br>";
         echo "<br>";
     }
 }
