@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<body>
 <head>
     <title>Detail Stad</title>
     <meta charset="utf-8">
@@ -20,7 +21,6 @@
             crossorigin="anonymous"></script>
 
 </head>
-<body>
 
 <div class="jumbotron text-center">
     <h1>Detail Stad</h1>
@@ -54,7 +54,7 @@
 
             //hyperlink
             print '<p></p>';
-            print '<p><a href=steden2.php>Terug naar overzicht</a></p>';
+            print '<p><a href='steden_ex2.php'>Terug naar overzicht</a></p>';
 
             print '</div>' ;
         }

@@ -1,15 +1,23 @@
 <?php
-// fetch information from database
+
+//collect data
 require_once "config.php";
 
 $sql = "select * from images";
+
+//collect required information from URL
+if ($_GET["img_id"] > "") {
+    $sql .= " where img_id like " . $_GET["img_id"];
+    //var_dump($sql);
+}
 $result = GetData($sql);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>De leukste plekken in Europa</title>
+    <title>Detail stad</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,37 +36,45 @@ $result = GetData($sql);
             crossorigin="anonymous"></script>
 
 </head>
+
+<style>
+    .information {
+        padding: 25px;
+    }
+
+    img {
+        display: block;
+        height: auto;
+        width: 75%;
+
+    }
+
+</style>
 <body>
 
 <div class="jumbotron text-center">
-    <h1>De leukste plekken in Europa</h1>
-    <p>Tips voor citytrips en vrolijke vakantiegangers!</p>
+    <h1>Detail Stad</h1>
 </div>
 
-<div class="container">
-    <div class="row">
-        <?php
-        //show result (if there is any)
-        if ($result->num_rows > 0) {
-            //output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<div class='col-sm-4'>
+
+<?php
+//show result (if there is any)
+if ($result->num_rows > 0) {
+    //output data
+    while ($row = $result->fetch_assoc()) {
+        echo " <div class='information'>
             <h3>$row[img_title]</h3>
+            <p>filename: $row[img_filename]</p>
             <p>$row[img_width] x $row[img_height] pixels</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-            <img src='./images/$row[img_filename]' width='300' height='200'/></br>
-            <a href='stad.php?img_id=$row[img_id]'>Meer info</a>
+            <img src='./images/$row[img_filename]'/></br>
+            <a href='steden_ex2.php'>Terug naar overzicht</a>
             </div>";
-            }
-        }
-        else
-        {
-            echo "no records found";
-        }
-        //$conn->close(); test
-        ?>
-    </div>
-</div>
+
+    }
+} else {
+    echo "no records found";
+}
+
+?>
 </body>
 </html>

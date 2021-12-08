@@ -1,29 +1,12 @@
 <?php
+//fetch information from database
+require_once "config.php";
 
-function GetData()
-{
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "steden";
-
-//Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed:. $conn->connect_error");
-    }
-
-//define and execute query
-    $sql = "select * from images";
-    $result = $conn->query($sql);
-    return $result;
-}
-$result = GetData();
+$sql = "select * from images";
+$result = GetData($sql);
 ?>
 
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <title>De leukste plekken in Europa</title>
     <meta charset="utf-8">
@@ -31,7 +14,8 @@ $result = GetData();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -59,23 +43,22 @@ $result = GetData();
             //output data of each row
             while ($row = $result->fetch_assoc()) {
                 echo "<div class='col-sm-4'>
-            <h3>$row[img_title]</h3>
-            <p>$row[img_width] x $row[img_height] pixels</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-            <img src='./images/$row[img_filename]' width='300' height='200'/>
-            </div>";
+           <h3>$row[img_title]</h3>
+           <p>$row[img_width] x $row[img_height] pixels</p>
+           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+           <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+           <img src='./images/$row[img_filename]' width='300' height='200'/>
+           </div>";
 
-                //alle afbeeldingen overlopen, en kolom opmaken met titel en afbeelding
             }
-        }
-        else
-        {
+        } else {
             echo "no records found";
         }
-        $conn->close();
+
         ?>
     </div>
 </div>
 </body>
 </html>
+<?php //$conn->close()
+//?>
