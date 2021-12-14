@@ -54,7 +54,7 @@
 
             //hyperlink
             print '<p></p>';
-            print '<p><a href='steden_ex2.php'>Terug naar overzicht</a></p>';
+            print '<p><a href=steden_ex2.php>Terug naar overzicht</a></p>';
 
             print '</div>' ;
         }
