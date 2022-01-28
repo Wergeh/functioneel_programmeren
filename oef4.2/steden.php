@@ -11,13 +11,15 @@ PrintNavbar();
 ?>
 
 <div class="container">
-    <?php
-    if($msgs != "")  print '<div class="alert alert-success">'. $msgs.'</div>';
-
-    ?>
     <div class="row">
 
         <?php
+        //toon messages als er zijn
+        foreach ( $msgs as $msg )
+        {
+            print '<div class="msgs">' . $msg . '</div>';
+        }
+
         //get data
         $data = GetData( "select * from images" );
 

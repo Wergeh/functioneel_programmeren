@@ -5,23 +5,32 @@ ini_set( 'display_errors', 1 );
 require_once "lib/autoload.php";
 
 PrintHead();
-PrintJumbo( $title = "Registratie", $subtitle = "" );
+PrintJumbo( $title = "Registreer", $subtitle = "" );
 ?>
 
 <div class="container">
     <div class="row">
 
         <?php
-
         //get data
-        $data = GetData( "select * from user" );
-        $row = $data = [ 0 => [ "usr_voornaam" => "", "usr_naam" => "", "usr_email" => "", "usr_password" => "" ]];
 
-        //add extra elements
-        $extra_elements['csrf_token'] = GenerateCSRF( "stad_form.php"  );
+        if ( count($old_post) > 0 )
+        {
+            $data = [ 0 => [
+                "usr_voornaam" => $old_post['usr_voornaam'],
+                "usr_naam" => $old_post['usr_naam'],
+                "usr_email" => $old_post['usr_email'],
+                "usr_password" => $old_post['usr_password']
+            ]
+            ];
+        }
+        else $data = [ 0 => [ "usr_voornaam" => "", "usr_naam" => "", "usr_email" => "", "usr_password" => "" ]];
 
         //get template
         $output = file_get_contents("templates/register.html");
+
+        //add extra elements
+        $extra_elements['csrf_token'] = GenerateCSRF( "register.php"  );
 
         //merge
         $output = MergeViewWithData( $output, $data );

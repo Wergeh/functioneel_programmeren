@@ -38,6 +38,11 @@ function MergeViewWithData( $template, $data )
         $returnvalue .= $output;
     }
 
+    if ( $data == [] )
+    {
+        $returnvalue = $template;
+    }
+
     return $returnvalue;
 }
 
